@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<script src="../JSlibrary/timeago.js" type="text/javascript"></script>
+	<script src="../JSlibrary/date.js" type="text/javascript"></script>
+	<script src="../JSlibrary/prettyDate.js" type="text/javascript"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+	$.getJSON("espn.js", function(data) {
+			$.each(data.headlines, function(i, item) {
+				$("#newsfeed").append('<div class="newsItem span-10 clear">' +  
+				'<h2 class="sport' + item.categories.leagueId + '">' + item.categories.leagueId + '</h2>' +
+				'<p class="title">' + item.headline + '</p>' + 
+				'<p class="abstract">' + item.description + '</p>' +
+				'<p class="update_date right">' + item.published + '</p>' +
+				'<p class="url"><a href="' + item.links.web.href + '">' + 'ESPN Article Link </a> </div>');
+			});
+		});
+	});
+	</script>
+	
+	<title> NewsFeed Prototype v0.1 </title>	
+	<!-- Framework CSS -->
+	    <link rel="stylesheet" href="blueprint/screen.css" type="text/css" media="screen, projection">
+	    <link rel="stylesheet" href="blueprint/print.css" type="text/css" media="print">
+		<link rel="stylesheet" href="custom.css" type="text/cass" media="screen">
+	    <!--[if lt IE 8]><link rel="stylesheet" href="../../blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	</head>
+	<body>
+		<h1> News Feed a la Rotoworld </h1>
+		<div id="newsfeed" class="container">
+		</div>		
+	</body>
+</html>

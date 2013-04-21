@@ -1,0 +1,60 @@
+section: 
+title:
+abstract:
+url:
+byline:
+item_type:
+source:
+updated_date:
+created_date:
+published_date:
+material_type_facet:
+subheadline:
+des_facet:
+org_facet:
+per_facet:
+geo_facet:
+related_urls:
+
+sections that I want:
+business; health; science; sports; technology; u.s.; world 
+
+{"status":"OK","copyright":"Copyright (c) 2012 The New York Times Company.  All Rights Reserved.","num_results":41,"results":[{"section":"arts","display_name":"Arts"},
+{"section":"automobiles","display_name":"Automobiles"},{"section":"autos","display_name":"Autos"},
+{"section":"blogs","display_name":"Blogs"},
+{"section":"books","display_name":"Books"},
+{"section":"business","display_name":"Business"},
+{"section":"business day","display_name":"Business Day"},
+{"section":"corrections","display_name":"Corrections"},
+{"section":"crosswords & games","display_name":"Crosswords & Games"},
+{"section":"crosswords\/games","display_name":"Crosswords\/Games"},
+{"section":"dining & wine","display_name":"Dining & Wine"},
+{"section":"education","display_name":"Education"},
+{"section":"fashion & style","display_name":"Fashion & Style"},
+{"section":"giving","display_name":"Giving"},
+{"section":"great homes and destinations","display_name":"Great Homes and Destinations"},
+{"section":"health","display_name":"Health"},{"section":"home & garden","display_name":"Home & Garden"},
+{"section":"job market","display_name":"Job Market"},
+{"section":"magazine","display_name":"Magazine"},
+{"section":"movies","display_name":"Movies"},
+{"section":"multimedia","display_name":"Multimedia"},
+{"section":"multimedia\/photos","display_name":"Multimedia\/Photos"},
+{"section":"n.y. \/ region","display_name":"N.Y. \/ Region"},
+{"section":"obituaries","display_name":"Obituaries"},
+{"section":"open","display_name":"Open"},
+{"section":"opinion","display_name":"Opinion"},
+{"section":"real estate","display_name":"Real Estate"},
+{"section":"science","display_name":"Science"},
+{"section":"sports","display_name":"Sports"},
+{"section":"style","display_name":"Style"},
+{"section":"sunday review","display_name":"Sunday Review"},
+{"section":"t magazine","display_name":"T Magazine"},
+{"section":"t:style","display_name":"T:Style"},
+{"section":"technology","display_name":"Technology"},
+{"section":"theater","display_name":"Theater"},
+{"section":"timesmachine","display_name":"TimesMachine"},
+{"section":"travel","display_name":"Travel"},
+{"section":"u.s.","display_name":"U.S."},
+{"section":"week in review","display_name":"Week in Review"},
+{"section":"world","display_name":"World"},
+{"section":"your money","display_name":"Your Money"}]}

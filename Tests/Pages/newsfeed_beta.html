@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<script src="../JSlibrary/timeago.js" type="text/javascript"></script>
+	<script src="../JSlibrary/date.js" type="text/javascript"></script>
+	<script src="prettyDate.js" type="text/javascript"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+	$.getJSON("data.js", function(data) {
+			$.each(data.results, function(i, item) {
+				$("#newsfeed").append('<div class="newsItem span-12 clear left">' +  
+				'<h2 class="' + item.section + '">' + (i+1) + '. ' + item.section + '</h2>' +
+				'<p class="title">' + item.title + '</p>' + 
+				'<p class="abstract">' + item.abstract + '</p>' +
+				'<p class="update_date right"> less than a minute ago </p>' +
+				'<p class="url"><a href="' + item.url + '">' + 'NYT Article Link </a> </div>');
+			});
+		});
+	});
+	</script>
+	
+	<title> NewsFeed Prototype v0.1 </title>	
+	<!-- Framework CSS -->
+	    <link rel="stylesheet" href="blueprint/screen.css" type="text/css" media="screen, projection">
+	    <link rel="stylesheet" href="blueprint/print.css" type="text/css" media="print">
+		<link rel="stylesheet" href="custom.css" type="text/cass" media="screen">
+	    <!--[if lt IE 8]><link rel="stylesheet" href="../../blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	</head>
+	<body>
+		<div id="newsfeed" class="clear">
+		</div>
+		<div id="articleFull" class="container span-20">
+			<div>  
+				<p class="articleTitle"> Flush With Cash, Apple Plans Buyback and Dividend </p>
+			<p class="fullArticle">SAN FRANCISCO &mdash; <a href="http://topics.nytimes.com/top/news/business/companies/apple_computer_inc/index.html?inline=nyt-org" title="More information about Apple Incorporated" class="meta-org">Apple</a> announced Monday that it would pay a quarterly dividend of $2.65 a share beginning in the quarter that starts in July, and its board authorized a $10 billion share buyback. The moves will reward investors by using up some of the company&rsquo;s cash hoard of nearly $100 billion and likely attract a new group of investors to buy the stock.        </p> 
+			 <p class="fullArticle">
+			But the actions are not likely to reduce the amount of cash in the company&rsquo;s coffers because Apple continues to generate so much money from its business.        </p><p class="fullArticle">
+			<a title="An audio recording of the conference call." href="http://events.apple.com.edgesuite.net/123pijhbsdfvohbafv19/event/index.html">In a conference call</a> with Wall Street analysts, Apple executives said the plan would place Apple among the top dividend-paying companies in the United States, but would leave it with the flexibility to make big investments that help keep up its growth.        </p><p class="fullArticle">
+			&ldquo;These decisions will not close any doors for us,&rdquo; said Timothy D. Cook, Apple&rsquo;s chief executive.        </p><p class="fullArticle">
+			Apple stock, which has been on a steep trajectory up, rose about 2 percent to $597.80 a share.        </p><p class="fullArticle">
+			Michael Holt of Morningstar, an equities analyst on technology stocks, said a dividend had been already factored into the share price. &ldquo;People were counting on this cash in their valuations,&rdquo; he said.        </p><p class="fullArticle">
+			<a title="A news release from Apple. " href="http://www.apple.com/pr/library/2012/03/19Apple-Announces-Plans-to-Initiate-Dividend-and-Share-Repurchase-Program.html">The company said</a> it would use up to $45 billion of its domestic cash on the stock buyback and dividend program. The three-year stock buyback would begin in September 2013. The company said it would spend about $10 billion per year on the dividend.        </p><p class="fullArticle">
+			Apple, which recently released a new version of its <a href="http://topics.nytimes.com/top/reference/timestopics/subjects/i/ipad/index.html?inline=nyt-classifier">iPad</a>, had been widely expected to announce a dividend. As its cash has piled up, Wall Street analysts and investors had begun to call more loudly for the company to return some of it to shareholders. Although having too much cash is rarely seen as a burden for a company, Apple earns less than 1 percent in interest on the cash, which many investors viewed as wasteful.        </p><p class="fullArticle">
+			Bill Choi, a managing director for Janney Montgomery Scott, said that the dividend rate was in line with what was expected, but that a consequence of the announcement would probably be record volumes of trading in the stock in the coming days as funds that cannot own a stock unless it pays a dividend start buying.        </p><p class="fullArticle">
+			&ldquo;Apple is quite widely owned already,&rdquo; he said. &rdquo;Every large fund family, from Fidelity to Vanguard, all have an income-oriented fund,&rdquo; which can now acquire the stock. &ldquo;It is one high-quality name that they can own.&rdquo;        </p><p class="fullArticle">
+			While the amount of cash Apple plans to return to investors is large, it is still small relative to its share price, amounting to a 1.8 percent annual yield on Apple&rsquo;s stock, which places Apple at the low end of its peers in the technology world, said Mike Abramsky, an analyst at RBC Capital Markets. In comparison, he said, Microsoft pays a 2.5 percent dividend, Intel pays a 3 percent dividend and Hewlett-Packard pays a 2 percent dividend.        </p><p class="fullArticle">
+			&ldquo;Rather than being stingy, they&rsquo;re more likely being conservative in how they&rsquo;re positioning themselves so they can raise it at appropriate points in the future,&rdquo; Mr. Abramsky said.        </p><p class="fullArticle">
+			Until recently, Apple had resisted pressure to issue a dividend, a practice often associated with mature companies that have settled into slower rates of sales and earnings growth. Apple had <a href="http://investor.apple.com/faq.cfm">issued shareholder dividends</a> earlier in its history, Apple <a title="Dividend history." href="http://investor.apple.com/dividends.cfm">stopped paying dividends</a> to its shareholders in December 1995, when its cash reserves were dwindling.        </p><p class="fullArticle">
+			Earlier this year, Mr. Cook announced that Apple&rsquo;s board was actively discussing what to do with the company&rsquo;s cash. While the bulk of $45 billion it expects to spend will go to its dividend, Apple said its share repurchase would account for $10 billion of that figure over three years. Its primary purpose will be to eliminate the shareholder dilution that will occur from future Apple employee equity grants and stock purchase programs.        </p><p class="fullArticle">
+			Apple said it would not finance the dividends and buybacks using any of the cash generated by overseas sales, which currently account for about two-thirds of its total cash balance. To bring that cash back to the United States, Apple would have to pay hefty repatriation taxes, very likely more than 30 percent.        </p><p class="fullArticle">
+			The amount of money held overseas is likely to become a bigger part of its cash balance in the future as more of its sales shift to developing markets like China. Apple told Congress that current tax laws discourage United States companies from bringing foreign-held cash back home.        </p>
+			<p class="large
+			">Christine Hauser contributed reporting. </p>
+		</div>	
+		</div>	
+	</body>
+</html>

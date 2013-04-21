@@ -1,0 +1,131 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+<script type="text/javascript" src="../JSlibrary/spinner.js"></script>
+<!-- 
+<script src="../JSlibrary/jquery-1.7.2.mins.js" type="text/javascript"></script> 
+<script src="../JSlibrary/timego.js" type="text/javascript"></script>
+
+-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
+<script type="text/javascript" src="jquery.timeago.js" ></script>
+<script type="text/javascript" src="jquery.livequery.js" ></script>
+<script type="text/javascript">
+function pullFeed()
+{
+var xmlhttp;    
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("articleFeed").innerHTML=xmlhttp.responseText;
+	var elements = $('#articleFeed .update_date');
+	activate_timeago(elements);
+    }
+  }
+xmlhttp.open("GET","article_feed.php",true);
+xmlhttp.send();
+}
+
+function loadArticle(url_hash)
+{
+ if (url_hash =="")
+  {
+  document.getElementById("articleFull").innerHTML="<p> Nothing to get! </p>";
+  return;
+  }
+var xmlhttp;    
+/* var target = document.getElementById('articleFull');
+var spinner = new Spinner().spin(target); */
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+		document.getElementById("articleFull").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","loadArticle.php?url="+url_hash,true);
+xmlhttp.send();
+
+}
+
+$(function(){
+    $(window).resize(function(){
+        placeFooter();
+    });
+    placeFooter();
+    // hide it before it's positioned
+    $('#footer').css('display','inline');
+});
+
+function placeFooter() {    
+    var windHeight = $(window).height();
+    var footerHeight = $('#footer').height();
+    var offset = parseInt(windHeight) - parseInt(footerHeight);
+    $('#footer').css('top',offset);
+}
+</script>
+<!--
+<script type="text/javascript">
+jQuery(document).ready(function() {
+  $("abbr.timeago").livequery(function () { $(this).timeago(); })});
+</script>
+-->
+<script type="text/javascript">
+function activate_timeago(el){
+	$(el).each(function(){
+		if (!$(this).hasClass('processed')){
+			$(this).timeago();
+			$(this).addClass('processed');
+		}
+	});
+}
+</script>
+
+<title> NewsFeed Prototype v0.1 </title>	
+	<link id="cssfile" rel="stylesheet" href="sexyreading.css" type="text/cass" media="screen">
+    <!--[if lt IE 8]><link rel="stylesheet" href="../../blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+<!-- Article Feed Title Font -->	
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body onload="pullFeed()">
+<div>
+	<div id="header">
+	<h1 class="header"> NewsFeed </h1>
+	<h4> By Philip Liou 2012</h4>
+<!--	<button onclick="document.getElementById('cssfile').href='sexyreading.css';" style='margin-top:20px; float: right';> Helveti-yeah! </button>
+	<button onclick="document.getElementById('cssfile').href='easyreading.css';" style='margin-top:20px; float: right'> Arial View </button>
+	<button onclick="document.getElementById('cssfile').href='formalreading.css';" style='margin-top:20px; float: right'> Finance Type </button>
+-->
+	</div>
+	
+	<div id="articleFeed"> 
+	
+	<h2> Article feed is loading as quickly as your internet connection will allow... </h2>	
+	</div>
+	
+	<div id="articleFull" class="span-17"> 
+		<h2 style='text-align:center'> Click on an article to the left and the article will load here. </h2>
+	</div>
+
+	<div id="footer" style="position: absolute; display: none;">I am a footer</div>
+</div>
+</body>
+</html>
+

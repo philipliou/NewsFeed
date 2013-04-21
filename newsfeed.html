@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+
+<title> NewsFeed Prototype v0.1 </title>	
+	<link id="cssfile" rel="stylesheet" href="CSS/formalreading.css" type="text/css" media="screen">
+
+	<!-- Article Feed Title Font -->	
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+	
+	<!-- Google Analytics -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-30870991-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+</head>
+
+<!-- Webpage Content Starts -->
+<body onload="pullFeed()">
+	<div>
+		<div id="header">
+			<a href="http://ptwiggerl.com/lab/newsfeed.html" text="home"><h1 class="header"> NewsFeed TEST </h1></a>
+			<button class="styled-button-1" onclick="document.getElementById('cssfile').href='CSS/sexyreading2.css';"> Helveti-yeah! </button>
+			<button class="styled-button-1" onclick="document.getElementById('cssfile').href='CSS/easyreading.css';"> Arial View </button>
+			<button class="styled-button-1" onclick="document.getElementById('cssfile').href='CSS/formalreading.css';"> Finance Type </button>
+			<button class="styled-button-1" onclick="document.getElementById('cssfile').href='CSS/sexyreading.css';"> White Space </button> -->
+			<button class="styled-button-2" onclick="refreshFeed()"> Refresh Feed </button>
+			<select>
+				<option onclick="pullFeed()"> Wall Street Journal </option>
+				<option onclick="pullFeed()"> New York Times </option>
+				<option> Business Week </option>
+			</select> -->
+		</div>
+		
+		<div id="container">
+			<div id="articleFeed"> 
+				<h2> Article feed is loading... </h2>
+			</div>
+	
+			<div id="articleFull" class="span-15"> 
+				<h2 style='text-align:center'> Click on an article to the left and the article will load here. </h2>
+			</div>
+		</div>
+		
+		<div id="footer" style="position: absolute; display: none;">I am a footer
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript"src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
+<script type="text/javascript" src="JavaScript/jquery.timeago.js" ></script>
+<script type="text/javascript" src="JavaScript/jquery.livequery.js" ></script>
+<script type="text/javascript" src="../JSlibrary/jquery.philsjquery.js"></script>
+<script type="text/javascript">
+function pullFeed()
+{
+    spinner = document.createElement("div");
+    spinner.className = 'spinner';
+    var container = $("#articleFeed");
+    container.append(spinner);
+    container.find(".spinner").center();
+var xmlhttp;    
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("articleFeed").innerHTML=xmlhttp.responseText;
+	
+	var elements = $('#articleFeed .update_date');
+	activate_timeago(elements);
+    }
+  }
+xmlhttp.open("GET","article_feed.php",true);
+xmlhttp.send();
+}
+
+function refreshFeed() {
+	document.getElementById("articleFeed").innerHTML=("");
+	pullFeed();
+}
+
+function loadArticle(url_hash)
+{
+    spinner = document.createElement("div");
+    spinner.className = 'spinner';
+    var container = $('#articleFull').empty();
+    $('#articleFull').append(spinner);
+    $("#articleFull .spinner").center();
+	
+ if (url_hash =="")
+  {
+  document.getElementById("articleFull").innerHTML="<p> Nothing to get! </p>";
+  return;
+  }
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+		document.getElementById("articleFull").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","loadArticle.php?url="+url_hash,true);
+xmlhttp.send();
+
+}
+
+$(function(){
+    $(window).resize(function(){
+        placeFooter();
+    });
+    placeFooter();
+    // hide it before it's positioned
+    $('#footer').css('display','inline');
+});
+</script>
+
+<script type="text/javascript">
+function activate_timeago(el){
+	jQuery.timeago.settings.allowFuture = true;
+	$(el).each(function(){
+		if (!$(this).hasClass('processed')){
+			$(this).timeago();
+			$(this).addClass('processed');
+		}
+	});
+}
+</script>
+
