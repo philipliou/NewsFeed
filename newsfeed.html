@@ -28,13 +28,13 @@
 <body onload="pullFeed()">
 	<div>
 		<div id="header">
-			<a href="http://ptwiggerl.com/lab/newsfeed.html" text="home"><h1 class="header"> NewsFeed TEST </h1></a>
-			<button class="styled-button-1" onclick="document.getElementById('cssfile').href='CSS/sexyreading2.css';"> Helveti-yeah! </button>
+			<a href="http://ptwiggerl.com/lab/newsfeed.html" text="home"><h1 class="header"> NewsFeed </h1></a>
+			<!-- <button class="styled-button-1" onclick="document.getElementById('cssfile').href='CSS/sexyreading2.css';"> Helveti-yeah! </button>
 			<button class="styled-button-1" onclick="document.getElementById('cssfile').href='CSS/easyreading.css';"> Arial View </button>
 			<button class="styled-button-1" onclick="document.getElementById('cssfile').href='CSS/formalreading.css';"> Finance Type </button>
 			<button class="styled-button-1" onclick="document.getElementById('cssfile').href='CSS/sexyreading.css';"> White Space </button> -->
 			<button class="styled-button-2" onclick="refreshFeed()"> Refresh Feed </button>
-			<select>
+			<!-- <select>
 				<option onclick="pullFeed()"> Wall Street Journal </option>
 				<option onclick="pullFeed()"> New York Times </option>
 				<option> Business Week </option>
@@ -56,13 +56,12 @@
 	</div>
 </body>
 </html>
-<script type="text/javascript"src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript" src="JavaScript/jquery.timeago.js" ></script>
 <script type="text/javascript" src="JavaScript/jquery.livequery.js" ></script>
 <script type="text/javascript" src="../JSlibrary/jquery.philsjquery.js"></script>
 <script type="text/javascript">
-function pullFeed()
-{
+function pullFeed() {
     spinner = document.createElement("div");
     spinner.className = 'spinner';
     var container = $("#articleFeed");
@@ -83,8 +82,15 @@ xmlhttp.onreadystatechange=function()
     {
     document.getElementById("articleFeed").innerHTML=xmlhttp.responseText;
 	
-	var elements = $('#articleFeed .update_date');
-	activate_timeago(elements);
+	var dateElements = $('#articleFeed .update_date');
+	activate_timeago(dateElements);
+
+	// var $newsItems = $('#articleFeed .newsItem');
+	// $newsItems.find("p.abstract").hide();
+	// $newsItems.mouseenter(toggleAbstract);
+	// $newsItems.mouseleave(function() {
+	// 	$(this).find("p.abstract").slideToggle();
+	// });
     }
   }
 xmlhttp.open("GET","article_feed.php",true);
