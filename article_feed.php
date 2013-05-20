@@ -39,18 +39,24 @@ if(!$con)
 	$result = mysql_query("SELECT section,title,abstract,source,url,updated_date,url_hash FROM ptwigger_news.articles a WHERE source='Business Week' and(section='Business Day' or section='Business' or section='Technology' or section='Sports' or section='Science' or section='Health' or section='Travel') group by title order by updated_date desc LIMIT 100"); */
 
 // Image for NYT Logo: <img src='../images/icons/nytimes_transparent_icon.png' height='15 px' width='15 px' style='float:left; padding-right:15px; padding-top:2 px;' />
-	
-	while ($row = mysql_fetch_array($result))
-	{
-		$iso_date = date("c", strtotime($row['updated_date']));
-		
-		echo "<div onclick=" . "loadArticle('" . $row['url_hash'] . "') class='newsItem span-12 left'>";
-		echo "<h2 class=" . $row['section'] . ">" . $row['section'] . "</h2>";
-		echo "<p class='title'>" . $row['title'] . "</p>";
-		echo "<p class='abstract'>" . $row['abstract'] . "</p>";
-		echo "<p class='update_date' title='" . $iso_date . "'>" . $iso_date . "</abbr>";
-		echo "<p class='url'><a href=" . $row['url'] . "> Source: " . $row['source'] . "</a> </div>";
+	$rows = array();
+	while($r = mysql_fetch_assoc($result)) {
+		$rows[] = $r;
 	}
+
+	echo json_encode($rows);
+
+	// while ($row = mysql_fetch_array($result))
+	// {
+	// 	$iso_date = date("c", strtotime($row['updated_date']));
+		
+	// 	echo "<div onclick=" . "loadArticle('" . $row['url_hash'] . "') class='newsItem span-12 left'>";
+	// 	echo "<h2 class=" . $row['section'] . ">" . $row['section'] . "</h2>";
+	// 	echo "<p class='title'>" . $row['title'] . "</p>";
+	// 	echo "<p class='abstract'>" . $row['abstract'] . "</p>";
+	// 	echo "<p class='update_date' title='" . $iso_date . "'>" . $iso_date . "</abbr>";
+	// 	echo "<p class='url'><a href=" . $row['url'] . "> Source: " . $row['source'] . "</a> </div>";
+	// }
 	
 	mysql_close($con);
 ?>
