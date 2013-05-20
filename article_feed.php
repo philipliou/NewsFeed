@@ -40,10 +40,11 @@ if(!$con)
 
 // Image for NYT Logo: <img src='../images/icons/nytimes_transparent_icon.png' height='15 px' width='15 px' style='float:left; padding-right:15px; padding-top:2 px;' />
 	$rows = array();
-		while($r = mysql_fetch_assoc($result)) {
+	while($r = mysql_fetch_assoc($result)) {
 		$rows[] = $r;
 	}
-	print json_encode($rows);
+
+	echo json_encode($rows);
 
 	// while ($row = mysql_fetch_array($result))
 	// {

@@ -43,7 +43,7 @@
 		
 		<div id="container">
 			<div id="articleFeed"> 
-				<h2> Article feed is loading... </h2>
+				<h2> Article Feed is loading ... </h2>
 			</div>
 	
 			<div id="articleFull" class="span-15"> 
@@ -68,46 +68,47 @@ function pullFeed() {
     var container = $("#articleFeed");
     container.append(spinner);
     container.find(".spinner").center();
-var xmlhttp;    
-if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }
-else
-  {// code for IE6, IE5
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-xmlhttp.onreadystatechange=function()
-  {
-  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    {
-    // document.getElementById("articleFeed").innerHTML=xmlhttp.responseText;
 
-    // retrieve JSON object
-    var responseTEXT = xmlhttp.responseText;
-    
-    // convert text to JSON
-    var JSON = $.parseJSON(responseTEXT);
-    JSON = { 'data' : JSON };
+	var xmlhttp;    
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+	    // document.getElementById("articleFeed").innerHTML=xmlhttp.responseText;
 
-    // create mustache template
-    var template = $('#articleFeedTpl').html();
-    var output = Mustache.to_html(template, JSON);
-    $("#articleFeed").html(output);
+	    // retrieve JSON object
+	    var responseTEXT = xmlhttp.responseText;
+	    
+	    // convert text to JSON
+	    var JSON = $.parseJSON(responseTEXT);
+	    JSON = { 'data' : JSON };
 
-	var dateElements = $('#articleFeed .update_date');
-	activate_timeago(dateElements);
+	    // create mustache template
+	    var template = $('#articleFeedTpl').html();
+	    var output = Mustache.to_html(template, JSON);
+	    $("#articleFeed").html(output);
 
-	// var $newsItems = $('#articleFeed .newsItem');
-	// $newsItems.find("p.abstract").hide();
-	// $newsItems.mouseenter(toggleAbstract);
-	// $newsItems.mouseleave(function() {
-	// 	$(this).find("p.abstract").slideToggle();
-	// });
-    }
-  }
-xmlhttp.open("GET","article_feed.php",true);
-xmlhttp.send();
+		var dateElements = $('#articleFeed .update_date');
+		activate_timeago(dateElements);
+
+		// var $newsItems = $('#articleFeed .newsItem');
+		// $newsItems.find("p.abstract").hide();
+		// $newsItems.mouseenter(toggleAbstract);
+		// $newsItems.mouseleave(function() {
+		// 	$(this).find("p.abstract").slideToggle();
+		// });
+	    }
+	  }
+	xmlhttp.open("GET","article_feed.php",true);
+	xmlhttp.send();
 }
 
 function refreshFeed() {
@@ -128,37 +129,28 @@ function loadArticle(url_hash)
   document.getElementById("articleFull").innerHTML="<p> Nothing to get! </p>";
   return;
   }
-var xmlhttp;
-if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }
-else
-  {// code for IE6, IE5
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-xmlhttp.onreadystatechange=function()
-  {
-  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    {
-		document.getElementById("articleFull").innerHTML=xmlhttp.responseText;
-    }
-  }
-xmlhttp.open("GET","loadArticle.php?url="+url_hash,true);
-xmlhttp.send();
-
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+			document.getElementById("articleFull").innerHTML=xmlhttp.responseText;
+	    }
+	  }
+	xmlhttp.open("GET","loadArticle.php?url="+url_hash,true);
+	xmlhttp.send();
 }
-
-$(function(){
-    $(window).resize(function(){
-        placeFooter();
-    });
-    placeFooter();
-    // hide it before it's positioned
-    $('#footer').css('display','inline');
-});
 </script>
 
+<!-- timeago.js function to generate fuzzy timestamps -->
 <script type="text/javascript">
 function activate_timeago(el){
 	jQuery.timeago.settings.allowFuture = true;
@@ -170,8 +162,10 @@ function activate_timeago(el){
 	});
 }
 </script>
+
+<!-- Mustache.js template for newsItems -->
 <script id="articleFeedTpl" type="text/template">
-/* $iso_date = date("c", strtotime($row['updated_date'])); */
+<!-- $iso_date = date("c", strtotime($row['updated_date'])); -->
 {{#data}}
 	<div onclick="loadArticle( '{{url_hash}}' )" class='newsItem span-12 left'>
 		<h2 class='{{section}}'> {{section}} </h2>
